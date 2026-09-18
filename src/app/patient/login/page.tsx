@@ -18,11 +18,11 @@ export default function PatientLogin() {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [chatInput, setChatInput] = useState('');
   const [messages, setMessages] = useState<any[]>([
-    { sender: 'ai', text: 'Welcome to ArogyaKiosk Patient Gateway! Log in using your ABHA, Aadhaar, or Mobile Number, or register a new health profile.' }
+    { sender: 'ai', text: 'Welcome to ArogyaKiosk Patient Gateway! Log in using your ABHA, National ID, or Mobile Number, or register a new health profile.' }
   ]);
   
   const [step, setStep] = useState(1);
-  const [idType, setIdType] = useState('abha'); // 'abha' | 'aadhaar' | 'mobile'
+  const [idType, setIdType] = useState('abha'); // 'abha' | 'national_id' | 'mobile'
   const [accountMode, setAccountMode] = useState('existing'); // 'existing' | 'new'
   const [identifierValue, setIdentifierValue] = useState('');
   const [password, setPassword] = useState('');
@@ -54,7 +54,7 @@ export default function PatientLogin() {
     setChatInput('');
 
     setTimeout(() => {
-      let aiReply = "For login assistance, please enter your 14-digit ABHA ID, 12-digit Aadhaar, or 10-digit mobile number. If you are new, select 'Create New Account'.";
+      let aiReply = "For login assistance, please enter your 14-digit ABHA ID, 12-digit National ID, or 10-digit mobile number. If you are new, select 'Create New Account'.";
       const lower = userMsg.toLowerCase();
       if (lower.includes('abha') || lower.includes('id')) {
         aiReply = "ABHA ID must be exactly 14 numeric digits. You can link your Ayushman Bharat health records seamlessly.";
@@ -84,8 +84,8 @@ export default function PatientLogin() {
     const cleanVal = val.replace(/[^0-9]/g, '');
     if (type === 'abha' && cleanVal.length !== 14) {
       return 'Please enter a correct 14-digit ABHA number.';
-    } else if (type === 'aadhaar' && cleanVal.length !== 12) {
-      return 'Please enter a correct 12-digit Aadhaar number.';
+    } else if (type === 'national_id' && cleanVal.length !== 12) {
+      return 'Please enter a correct 12-digit ID number.';
     } else if (type === 'mobile' && cleanVal.length !== 10) {
       return 'Please enter a correct 10-digit mobile number.';
     }
@@ -202,33 +202,31 @@ export default function PatientLogin() {
       <div style={{
         backgroundColor: '#0b1329',
         borderBottom: '1px solid rgba(255,255,255,0.1)',
-        padding: '8px 32px',
+        padding: '8px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '12px',
-        fontSize: '12px',
+        gap: '8px',
+        fontSize: '11px',
         color: '#94a3b8'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ backgroundColor: '#ff9933', width: '14px', height: '10px', display: 'inline-block' }}></span>
-          <span style={{ fontWeight: 700, color: '#fff' }}>Government of India | भारत सरकार</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+          <span style={{ backgroundColor: '#ff9933', width: '12px', height: '8px', display: 'inline-block' }}></span>
+          <span style={{ fontWeight: 700, color: '#fff' }}>भारत सरकार | Govt of India</span>
           <span style={{ color: '#10b981', fontWeight: 600 }}>• Ministry of Ayush</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', gap: '4px' }}>
             <button onClick={() => setFontSizeScale(14)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A-</button>
             <button onClick={() => setFontSizeScale(16)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A</button>
             <button onClick={() => setFontSizeScale(18)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A+</button>
           </div>
-          <span>|</span>
-          <span onClick={toggleScreenReader} style={{ cursor: 'pointer', color: screenReaderActive ? '#34d399' : '#94a3b8', fontWeight: screenReaderActive ? 700 : 400 }}>
-            {screenReaderActive ? 'Screen Reader [ON]' : 'Screen Reader Access'}
+          <span className="hidden sm:inline">|</span>
+          <span onClick={toggleScreenReader} className="hidden sm:inline" style={{ cursor: 'pointer', color: screenReaderActive ? '#34d399' : '#94a3b8', fontWeight: screenReaderActive ? 700 : 400 }}>
+            {screenReaderActive ? 'Reader [ON]' : 'Screen Reader'}
           </span>
-          <span>|</span>
-          <span onClick={() => window.scrollTo({ top: 400, behavior: 'smooth' })} style={{ cursor: 'pointer', color: '#60a5fa' }}>Skip to main content</span>
         </div>
       </div>
 
@@ -237,23 +235,25 @@ export default function PatientLogin() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '20px 32px',
+        padding: '14px 16px',
         borderBottom: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0',
-        backgroundColor: isDark ? 'rgba(2, 6, 23, 0.9)' : 'rgba(255, 255, 255, 0.9)'
+        backgroundColor: isDark ? 'rgba(2, 6, 23, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+        flexWrap: 'wrap',
+        gap: '10px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={() => router.push('/')}>
-          <div style={{ padding: '10px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '12px', color: '#10b981' }}>
-            <Activity size={22} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={() => router.push('/')}>
+          <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '10px', color: '#10b981' }}>
+            <Activity size={20} />
           </div>
-          <span style={{ fontSize: '18px', fontWeight: 700 }}>ArogyaKiosk • Patient Portal Gateway</span>
+          <span style={{ fontSize: '16px', fontWeight: 800 }}>ArogyaKiosk • Patient Gateway</span>
         </div>
 
         <button
           onClick={() => setIsDark(!isDark)}
           style={{
-            padding: '8px 14px',
-            borderRadius: '10px',
-            fontSize: '12px',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            fontSize: '11px',
             fontWeight: 700,
             cursor: 'pointer',
             backgroundColor: isDark ? '#0f172a' : '#ffffff',
@@ -264,7 +264,7 @@ export default function PatientLogin() {
             gap: '6px'
           }}
         >
-          {isDark ? <Sun size={14} /> : <Moon size={14} />}
+          {isDark ? <Sun size={13} /> : <Moon size={13} />}
           <span>{isDark ? 'Light' : 'Dark'}</span>
         </button>
       </header>
@@ -273,104 +273,101 @@ export default function PatientLogin() {
       <div style={{
         backgroundColor: isDark ? '#060a12' : '#e2e8f0',
         borderBottom: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1',
-        padding: '12px 32px',
+        padding: '10px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '16px'
+        gap: '12px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap', fontSize: '13px', fontWeight: 700 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#10b981' }} onClick={() => router.push('/')}>
-            <HomeIcon size={16} /> Home
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', fontSize: '12px', fontWeight: 700 }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: '#10b981' }} onClick={() => router.push('/')}>
+            <HomeIcon size={14} /> Home
           </span>
-          <span onClick={() => setModalContent({ title: 'About Us - Ministry of Ayush & ArogyaKiosk', body: 'ArogyaKiosk is an AI-powered decentralized health platform developed for Smart India Hackathon.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <FileTextIcon size={16} /> About Us
+          <span onClick={() => setModalContent({ title: 'About Us', body: 'ArogyaKiosk is an AI-powered decentralized health platform developed for SIH 2026.' })} style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
+            <FileTextIcon size={14} /> About
           </span>
-          <span onClick={() => setModalContent({ title: 'Acts & Rules Compliance', body: 'Operating under national telemedicine guidelines and Ministry of Ayush clinical protocols.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <BookOpen size={16} /> Acts & Rules
+          <span onClick={() => setModalContent({ title: 'Rules Compliance', body: 'Operating under telemedicine guidelines and Ministry of Ayush clinical protocols.' })} style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
+            <BookOpen size={14} /> Rules
           </span>
-          <span onClick={() => setModalContent({ title: 'System Notifications', body: '• ChromaDB RAG Vector search engine synchronized.\n• All Kiosk authentication endpoints active.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <Bell size={16} /> Notification
-          </span>
-          <span onClick={() => setModalContent({ title: 'Contact Ministry Support', body: 'AYUSH BHAWAN, NEW DELHI - 110023\nSupport Email: support@arogyakiosk.gov.in' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <PhoneCall size={16} /> Contact Us
+          <span onClick={() => setModalContent({ title: 'Contact Support', body: 'AYUSH BHAWAN, NEW DELHI\nSupport Email: support@arogyakiosk.gov.in' })} style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
+            <PhoneCall size={14} /> Contact
           </span>
         </div>
       </div>
 
       {/* Main Container */}
-      <main style={{ maxWidth: '580px', margin: 'auto', padding: '40px 24px', width: '100%', boxSizing: 'border-box' }}>
+      <main style={{ maxWidth: '580px', margin: 'auto', padding: '24px 16px', width: '100%', boxSizing: 'border-box' }}>
         <div style={{
           backgroundColor: isDark ? '#0f172a' : '#ffffff',
           border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0',
-          padding: '40px',
-          borderRadius: '32px',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+          padding: '24px 20px',
+          borderRadius: '24px',
+          boxShadow: '0 15px 35px rgba(0,0,0,0.2)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px'
+          gap: '20px'
         }}>
           
           {errorMessage && (
             <div style={{
-              padding: '12px 16px',
+              padding: '10px 14px',
               backgroundColor: 'rgba(239, 68, 68, 0.1)',
               border: '1px solid rgba(239, 68, 68, 0.3)',
-              borderRadius: '12px',
+              borderRadius: '10px',
               color: '#ef4444',
-              fontSize: '13px',
+              fontSize: '12px',
               display: 'flex',
               alignItems: 'center',
-              gap: '10px'
+              gap: '8px'
             }}>
-              <AlertCircle size={18} />
+              <AlertCircle size={16} />
               <span>{errorMessage}</span>
             </div>
           )}
 
           {step === 1 ? (
-            <form onSubmit={handleStep1Submit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <form onSubmit={handleStep1Submit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ width: '50px', height: '50px', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', color: '#34d399' }}>
-                  <UserCheck size={26} />
+                <div style={{ width: '44px', height: '44px', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px', color: '#34d399' }}>
+                  <UserCheck size={22} />
                 </div>
-                <h2 style={{ fontSize: '24px', fontWeight: 800, margin: 0 }}>Patient Authentication</h2>
-                <p style={{ fontSize: '13px', color: '#94a3b8', marginTop: '6px' }}>Select verification type and account status</p>
+                <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>Patient Authentication</h2>
+                <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>Select verification type and account status</p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Select ID Type</label>
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Select ID Type</label>
                 <select
                   value={idType}
                   onChange={(e) => { setIdType(e.target.value); setErrorMessage(''); }}
                   style={{
-                    padding: '14px',
+                    padding: '12px',
                     backgroundColor: isDark ? '#020617' : '#f8fafc',
                     border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: isDark ? '#ffffff' : '#0f172a',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     outline: 'none',
                     cursor: 'pointer'
                   }}
                 >
                   <option value="abha">ABHA ID (14 digits)</option>
-                  <option value="aadhaar">Aadhaar Card (12 digits)</option>
+                  <option value="national_id">National ID / Gov ID (12 digits)</option>
                   <option value="mobile">Registered Mobile Number (10 digits)</option>
                 </select>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Account Status</label>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Account Status</label>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
                   <button
                     type="button"
                     onClick={() => { setAccountMode('existing'); setErrorMessage(''); }}
                     style={{
-                      padding: '12px',
-                      borderRadius: '10px',
-                      fontSize: '13px',
+                      padding: '10px',
+                      borderRadius: '8px',
+                      fontSize: '12px',
                       fontWeight: 700,
                       cursor: 'pointer',
                       border: accountMode === 'existing' ? '2px solid #10b981' : (isDark ? '1px solid #334155' : '1px solid #cbd5e1'),
@@ -384,9 +381,9 @@ export default function PatientLogin() {
                     type="button"
                     onClick={() => { setAccountMode('new'); setErrorMessage(''); }}
                     style={{
-                      padding: '12px',
-                      borderRadius: '10px',
-                      fontSize: '13px',
+                      padding: '10px',
+                      borderRadius: '8px',
+                      fontSize: '12px',
                       fontWeight: 700,
                       cursor: 'pointer',
                       border: accountMode === 'new' ? '2px solid #10b981' : (isDark ? '1px solid #334155' : '1px solid #cbd5e1'),
@@ -400,21 +397,21 @@ export default function PatientLogin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>
-                  {idType === 'abha' ? 'Enter 14-Digit ABHA ID' : idType === 'aadhaar' ? 'Enter 12-Digit Aadhaar Number' : 'Enter 10-Digit Mobile Number'}
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>
+                  {idType === 'abha' ? 'Enter 14-Digit ABHA ID' : idType === 'national_id' ? 'Enter 12-Digit Government ID' : 'Enter 10-Digit Mobile Number'}
                 </label>
                 <input
                   type="text"
-                  placeholder={idType === 'abha' ? '14 digit number' : idType === 'aadhaar' ? '12 digit number' : '10 digit mobile'}
+                  placeholder={idType === 'abha' ? '14 digit number' : idType === 'national_id' ? '12 digit number' : '10 digit mobile'}
                   value={identifierValue}
                   onChange={(e) => { setIdentifierValue(e.target.value); setErrorMessage(''); }}
                   style={{
-                    padding: '14px',
+                    padding: '12px',
                     backgroundColor: isDark ? '#020617' : '#f8fafc',
                     border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: isDark ? '#ffffff' : '#0f172a',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     outline: 'none'
                   }}
                   required
@@ -422,19 +419,19 @@ export default function PatientLogin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Password</label>
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Password</label>
                 <input
                   type="password"
                   placeholder="Enter your secure password"
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setErrorMessage(''); }}
                   style={{
-                    padding: '14px',
+                    padding: '12px',
                     backgroundColor: isDark ? '#020617' : '#f8fafc',
                     border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-                    borderRadius: '12px',
+                    borderRadius: '10px',
                     color: isDark ? '#ffffff' : '#0f172a',
-                    fontSize: '14px',
+                    fontSize: '13px',
                     outline: 'none'
                   }}
                   required
@@ -444,42 +441,42 @@ export default function PatientLogin() {
               <button
                 type="submit"
                 style={{
-                  marginTop: '8px',
-                  padding: '14px',
+                  marginTop: '6px',
+                  padding: '12px',
                   backgroundColor: '#10b981',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '14px',
-                  fontSize: '15px',
+                  borderRadius: '12px',
+                  fontSize: '14px',
                   fontWeight: 700,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  boxShadow: '0 10px 20px rgba(16, 185, 129, 0.3)'
+                  gap: '6px',
+                  boxShadow: '0 8px 16px rgba(16, 185, 129, 0.3)'
                 }}
               >
-                <span>{accountMode === 'existing' ? 'Login to Triage' : 'Next: Clinical Vitals & Details'}</span>
-                <ArrowRight size={18} />
+                <span>{accountMode === 'existing' ? 'Login to Triage' : 'Next: Clinical Vitals'}</span>
+                <ArrowRight size={16} />
               </button>
             </form>
           ) : (
-            <form onSubmit={handleFinalRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+            <form onSubmit={handleFinalRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
                 <button
                   type="button"
                   onClick={() => { setStep(1); setErrorMessage(''); }}
-                  style={{ background: 'none', border: 'none', color: '#34d399', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px', fontWeight: 700 }}
+                  style={{ background: 'none', border: 'none', color: '#34d399', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: 700 }}
                 >
-                  <ArrowLeft size={16} /> Back
+                  <ArrowLeft size={14} /> Back
                 </button>
-                <span style={{ fontSize: '12px', color: '#94a3b8' }}>Step 2 of 2: Health Profile</span>
+                <span style={{ fontSize: '11px', color: '#94a3b8' }}>Step 2 of 2: Health Profile</span>
               </div>
 
               <div>
-                <h2 style={{ fontSize: '22px', fontWeight: 800, margin: 0 }}>Create Patient Health Profile</h2>
-                <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>Provide your vital medical parameters for AI triage & doctor review</p>
+                <h2 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>Create Patient Health Profile</h2>
+                <p style={{ fontSize: '11px', color: '#94a3b8', marginTop: '2px' }}>Vital parameters for AI triage & doctor review</p>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -489,19 +486,19 @@ export default function PatientLogin() {
                   placeholder="e.g. Rahul Sharma"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                  style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                   required
                 />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Date of Birth (DOB) *</label>
+                  <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>DOB *</label>
                   <input
                     type="date"
                     value={formData.dob}
                     onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                     required
                   />
                 </div>
@@ -511,7 +508,7 @@ export default function PatientLogin() {
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                   >
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -520,44 +517,44 @@ export default function PatientLogin() {
                 </div>
               </div>
 
-              {/* NEW VITALS FIELDS: Weight, BP, Sugar */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+              {/* VITALS FIELDS */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: '8px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Weight (kg) *</label>
+                  <label style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Weight (kg) *</label>
                   <input
                     type="text"
-                    placeholder="e.g. 68 kg"
+                    placeholder="e.g. 68"
                     value={formData.weight}
                     onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 8px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '12px', outline: 'none' }}
                     required
                   />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>BP (mmHg)</label>
+                  <label style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>BP (mmHg)</label>
                   <input
                     type="text"
-                    placeholder="e.g. 120/80"
+                    placeholder="120/80"
                     value={formData.bp}
                     onChange={(e) => setFormData({ ...formData, bp: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 8px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '12px', outline: 'none' }}
                   />
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Sugar (mg/dL)</label>
+                  <label style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Sugar (mg/dL)</label>
                   <input
                     type="text"
-                    placeholder="e.g. 110 Fasting"
+                    placeholder="110 Fast"
                     value={formData.sugar}
                     onChange={(e) => setFormData({ ...formData, sugar: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 8px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '12px', outline: 'none' }}
                   />
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Emergency Contact</label>
                   <input
@@ -565,7 +562,7 @@ export default function PatientLogin() {
                     placeholder="Emergency Phone"
                     value={formData.emergencyContact}
                     onChange={(e) => setFormData({ ...formData, emergencyContact: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -573,7 +570,7 @@ export default function PatientLogin() {
                   <select
                     value={formData.bloodGroup}
                     onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                   >
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
@@ -587,15 +584,15 @@ export default function PatientLogin() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Create Password *</label>
                   <input
                     type="password"
-                    placeholder="Min 6 chars, 1 uppercase, 1 num"
+                    placeholder="Min 6 chars"
                     value={formData.newPassword}
                     onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                     required
                   />
                 </div>
@@ -607,18 +604,18 @@ export default function PatientLogin() {
                     placeholder="Re-enter password"
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
+                    style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none' }}
                     required
                   />
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Upload Medical Reports / X-Ray</label>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399' }}>Upload Reports</label>
                 <label style={{
                   border: isDark ? '2px dashed #334155' : '2px dashed #cbd5e1',
-                  padding: '14px',
-                  borderRadius: '12px',
+                  padding: '12px',
+                  borderRadius: '10px',
                   textAlign: 'center',
                   cursor: 'pointer',
                   display: 'flex',
@@ -627,15 +624,15 @@ export default function PatientLogin() {
                   gap: '4px',
                   backgroundColor: isDark ? 'rgba(255,255,255,0.02)' : '#f8fafc'
                 }}>
-                  <Upload size={20} color="#34d399" />
-                  <span style={{ fontSize: '12px', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569' }}>Click to upload reports</span>
+                  <Upload size={18} color="#34d399" />
+                  <span style={{ fontSize: '11px', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569' }}>Click to upload files</span>
                   <input type="file" multiple onChange={handleFileUpload} style={{ display: 'none' }} />
                 </label>
                 {formData.uploadedReports.length > 0 && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '2px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '2px' }}>
                     {formData.uploadedReports.map((fileName, idx) => (
                       <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#34d399' }}>
-                        <FileText size={14} /> <span>{fileName}</span>
+                        <FileText size={12} /> <span>{fileName}</span>
                       </div>
                     ))}
                   </div>
@@ -643,13 +640,13 @@ export default function PatientLogin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Residential Address *</label>
+                <label style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#94a3b8' }}>Address *</label>
                 <textarea
                   rows={2}
-                  placeholder="e.g. House No, Locality, City"
+                  placeholder="House No, Locality, City"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none', resize: 'none' }}
+                  style={{ padding: '10px 12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#ffffff' : '#0f172a', fontSize: '13px', outline: 'none', resize: 'none' }}
                   required
                 />
               </div>
@@ -657,24 +654,24 @@ export default function PatientLogin() {
               <button
                 type="submit"
                 style={{
-                  marginTop: '8px',
-                  padding: '14px',
+                  marginTop: '6px',
+                  padding: '12px',
                   backgroundColor: '#10b981',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '14px',
-                  fontSize: '15px',
+                  borderRadius: '12px',
+                  fontSize: '14px',
                   fontWeight: 700,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  boxShadow: '0 10px 20px rgba(16, 185, 129, 0.3)'
+                  gap: '6px',
+                  boxShadow: '0 8px 16px rgba(16, 185, 129, 0.3)'
                 }}
               >
                 <span>Register & Complete Health Profile</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={16} />
               </button>
             </form>
           )}
@@ -682,24 +679,24 @@ export default function PatientLogin() {
         </div>
       </main>
 
-      {/* Interactive Modal for Sub-Navbar items */}
+      {/* Interactive Modal */}
       {modalContent && (
         <div style={{
           position: 'fixed',
           top: 0, left: 0, width: '100vw', height: '100vh',
           backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(5px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '20px'
+          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '16px'
         }}>
           <div style={{
             backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-            borderRadius: '24px', padding: '32px', maxWidth: '500px', width: '100%',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '16px'
+            borderRadius: '20px', padding: '24px', maxWidth: '460px', width: '100%',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '12px'
           }}>
-            <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0, color: '#10b981' }}>{modalContent.title}</h3>
-            <p style={{ fontSize: '14px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{modalContent.body}</p>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#10b981' }}>{modalContent.title}</h3>
+            <p style={{ fontSize: '13px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.5, margin: 0, whiteSpace: 'pre-line' }}>{modalContent.body}</p>
             <button
               onClick={() => setModalContent(null)}
-              style={{ marginTop: '12px', padding: '12px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}
+              style={{ marginTop: '8px', padding: '10px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 700, cursor: 'pointer' }}
             >
               Close
             </button>
@@ -707,49 +704,49 @@ export default function PatientLogin() {
         </div>
       )}
 
-      {/* FLOATING ASTRONAUT AI ASSISTANT */}
-      <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 1200 }}>
+      {/* FLOATING AI ASSISTANT */}
+      <div style={{ position: 'fixed', bottom: '16px', right: '16px', zIndex: 1200 }}>
         {!isAiOpen ? (
           <button
             onClick={() => setIsAiOpen(true)}
             style={{
-              width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#10b981', color: '#ffffff',
+              width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#10b981', color: '#ffffff',
               border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 10px 25px rgba(16, 185, 129, 0.5)'
+              boxShadow: '0 8px 20px rgba(16, 185, 129, 0.4)'
             }}
             title="ArogyaKiosk AI Assistant"
           >
-            <Rocket size={28} />
+            <Rocket size={22} />
           </button>
         ) : (
           <div style={{
-            width: '360px', height: '480px', backgroundColor: isDark ? '#0f172a' : '#ffffff',
-            border: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1', borderRadius: '24px',
+            width: 'calc(100vw - 32px)', maxWidth: '350px', height: '440px', backgroundColor: isDark ? '#0f172a' : '#ffffff',
+            border: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1', borderRadius: '20px',
             display: 'flex', flexDirection: 'column', boxShadow: '0 20px 40px rgba(0,0,0,0.4)', overflow: 'hidden'
           }}>
-            <div style={{ padding: '16px 20px', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: isDark ? '#020617' : '#f8fafc' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', borderRadius: '50%' }}>
-                  <Rocket size={20} />
+            <div style={{ padding: '12px 16px', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: isDark ? '#020617' : '#f8fafc' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '6px', backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', borderRadius: '50%' }}>
+                  <Rocket size={16} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>ArogyaKiosk Astronaut</h3>
-                  <p style={{ fontSize: '10px', color: '#94a3b8', margin: 0 }}>App Scope Assistant</p>
+                  <h3 style={{ fontSize: '13px', fontWeight: 800, margin: 0 }}>ArogyaKiosk Assistant</h3>
+                  <p style={{ fontSize: '9px', color: '#94a3b8', margin: 0 }}>Login Help</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsAiOpen(false)}
                 style={{ background: 'none', border: 'none', color: isDark ? '#ffffff' : '#0f172a', cursor: 'pointer', padding: '4px' }}
               >
-                <X size={18} />
+                <X size={16} />
               </button>
             </div>
 
-            <div style={{ flex: 1, padding: '16px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ flex: 1, padding: '12px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {messages.map((msg, idx) => (
                 <div key={idx} style={{
                   alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-                  maxWidth: '85%', padding: '10px 14px', borderRadius: '12px', fontSize: '12px', lineHeight: 1.4,
+                  maxWidth: '85%', padding: '8px 12px', borderRadius: '10px', fontSize: '12px', lineHeight: 1.4,
                   backgroundColor: msg.sender === 'user' ? '#10b981' : (isDark ? '#1e293b' : '#f1f5f9'),
                   color: msg.sender === 'user' ? '#ffffff' : (isDark ? '#e2e8f0' : '#0f172a')
                 }}>
@@ -758,14 +755,14 @@ export default function PatientLogin() {
               ))}
             </div>
 
-            <form onSubmit={handleAiSend} style={{ padding: '12px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', gap: '8px' }}>
+            <form onSubmit={handleAiSend} style={{ padding: '10px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', gap: '6px' }}>
               <input
                 type="text"
-                placeholder="Ask about login help..."
+                placeholder="Ask for help..."
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 style={{
-                  flex: 1, padding: '10px 12px', borderRadius: '10px',
+                  flex: 1, padding: '8px 10px', borderRadius: '8px',
                   backgroundColor: isDark ? '#020617' : '#f8fafc',
                   border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
                   color: isDark ? '#ffffff' : '#0f172a', fontSize: '12px', outline: 'none'
@@ -774,11 +771,11 @@ export default function PatientLogin() {
               <button
                 type="submit"
                 style={{
-                  padding: '10px 12px', backgroundColor: '#10b981', color: '#ffffff',
-                  border: 'none', borderRadius: '10px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  padding: '8px 12px', backgroundColor: '#10b981', color: '#ffffff',
+                  border: 'none', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
               >
-                <Send size={14} />
+                <Send size={13} />
               </button>
             </form>
           </div>
@@ -786,17 +783,19 @@ export default function PatientLogin() {
       </div>
 
       <footer style={{
-        padding: '20px 32px',
+        padding: '16px',
         borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: '12px',
+        flexWrap: 'wrap',
+        gap: '8px',
+        fontSize: '11px',
         color: '#94a3b8'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ShieldCheck size={16} color="#34d399" />
-          <span>Secure Authentication & Report Archiving Standard</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <ShieldCheck size={14} color="#34d399" />
+          <span>Secure Authentication & Archiving</span>
         </div>
         <div>ArogyaKiosk Prototype</div>
       </footer>
