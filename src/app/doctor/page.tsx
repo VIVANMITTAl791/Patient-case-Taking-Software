@@ -195,57 +195,58 @@ export default function DoctorDashboard() {
         alignItems: 'center',
         justifyContent: 'center',
         fontFamily: 'sans-serif',
-        padding: '24px'
+        padding: '16px',
+        boxSizing: 'border-box'
       }}>
         <div style={{
           backgroundColor: '#0f172a',
           border: '1px solid #1e293b',
-          borderRadius: '28px',
-          padding: '40px',
+          borderRadius: '24px',
+          padding: '28px 20px',
           width: '100%',
-          maxWidth: '440px',
+          maxWidth: '420px',
           boxShadow: '0 25px 50px rgba(0,0,0,0.5)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '24px'
+          gap: '20px'
         }}>
-          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-            <div style={{ padding: '16px', backgroundColor: 'rgba(59, 130, 246, 0.15)', borderRadius: '20px', color: '#60a5fa' }}>
-              <Lock size={32} />
+          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+            <div style={{ padding: '14px', backgroundColor: 'rgba(59, 130, 246, 0.15)', borderRadius: '16px', color: '#60a5fa' }}>
+              <Lock size={28} />
             </div>
             <div>
-              <h2 style={{ fontSize: '22px', fontWeight: 900, margin: 0 }}>Doctor Command Gateway</h2>
-              <p style={{ fontSize: '12px', color: '#94a3b8', marginTop: '4px' }}>Restricted Medical Portal • Authorized Personnel Only</p>
+              <h2 style={{ fontSize: '20px', fontWeight: 900, margin: 0 }}>Doctor Command Gateway</h2>
+              <p style={{ fontSize: '11px', color: '#94a3b8', marginTop: '4px' }}>Restricted Medical Portal • Authorized Personnel Only</p>
             </div>
           </div>
 
           {loginError && (
-            <div style={{ padding: '12px', backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', color: '#ef4444', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
+            <div style={{ padding: '10px', backgroundColor: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '10px', color: '#ef4444', fontSize: '11px', fontWeight: 700, textAlign: 'center' }}>
               {loginError}
             </div>
           )}
 
-          <form onSubmit={handleDoctorLogin} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <form onSubmit={handleDoctorLogin} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <label style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>Doctor ID / Nodal Code</label>
+              <label style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>Doctor ID / Code</label>
               <input
                 type="text"
-                placeholder="Enter Doctor ID (e.g. DOC-108)"
+                placeholder="e.g. DOC-108"
                 value={docId}
                 onChange={(e) => setDocId(e.target.value)}
-                style={{ padding: '14px', backgroundColor: '#020617', border: '1px solid #334155', borderRadius: '12px', color: '#fff', fontSize: '14px', outline: 'none' }}
+                style={{ padding: '12px', backgroundColor: '#020617', border: '1px solid #334155', borderRadius: '10px', color: '#fff', fontSize: '13px', outline: 'none' }}
                 required
               />
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <label style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>Secure Password</label>
+              <label style={{ fontSize: '10px', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase' }}>Secure Password</label>
               <input
                 type="password"
                 placeholder="••••••••"
                 value={docPassword}
                 onChange={(e) => setDocPassword(e.target.value)}
-                style={{ padding: '14px', backgroundColor: '#020617', border: '1px solid #334155', borderRadius: '12px', color: '#fff', fontSize: '14px', outline: 'none' }}
+                style={{ padding: '12px', backgroundColor: '#020617', border: '1px solid #334155', borderRadius: '10px', color: '#fff', fontSize: '13px', outline: 'none' }}
                 required
               />
             </div>
@@ -253,31 +254,31 @@ export default function DoctorDashboard() {
             <button
               type="submit"
               style={{
-                marginTop: '10px',
-                padding: '16px',
+                marginTop: '6px',
+                padding: '14px',
                 backgroundColor: '#3b82f6',
                 color: '#fff',
                 border: 'none',
-                borderRadius: '14px',
+                borderRadius: '12px',
                 fontWeight: 800,
-                fontSize: '15px',
+                fontSize: '14px',
                 cursor: 'pointer',
-                boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
+                boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px'
               }}
             >
-              <Key size={18} /> Authenticate & Access Console
+              <Key size={16} /> Access Console
             </button>
           </form>
 
           <button
             onClick={() => router.push('/')}
-            style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '12px', cursor: 'pointer', fontWeight: 600, marginTop: '8px' }}
+            style={{ background: 'none', border: 'none', color: '#94a3b8', fontSize: '12px', cursor: 'pointer', fontWeight: 600, marginTop: '4px' }}
           >
-            ← Back to Home Gateway
+            ← Back to Home
           </button>
         </div>
       </div>
@@ -304,33 +305,31 @@ export default function DoctorDashboard() {
       <div style={{
         backgroundColor: '#0b1329',
         borderBottom: '1px solid rgba(255,255,255,0.1)',
-        padding: '8px 32px',
+        padding: '8px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '12px',
-        fontSize: '12px',
+        gap: '8px',
+        fontSize: '11px',
         color: '#94a3b8'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ backgroundColor: '#ff9933', width: '14px', height: '10px', display: 'inline-block' }}></span>
-          <span style={{ fontWeight: 700, color: '#fff' }}>Government of India | भारत सरकार</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+          <span style={{ backgroundColor: '#ff9933', width: '12px', height: '8px', display: 'inline-block' }}></span>
+          <span style={{ fontWeight: 700, color: '#fff' }}>भारत सरकार | Govt of India</span>
           <span style={{ color: '#10b981', fontWeight: 600 }}>• Ministry of Ayush</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', gap: '4px' }}>
             <button onClick={() => setFontSizeScale(14)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A-</button>
             <button onClick={() => setFontSizeScale(16)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A</button>
             <button onClick={() => setFontSizeScale(18)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A+</button>
           </div>
-          <span>|</span>
-          <span onClick={toggleScreenReader} style={{ cursor: 'pointer', color: screenReaderActive ? '#34d399' : '#94a3b8', fontWeight: screenReaderActive ? 700 : 400 }}>
-            {screenReaderActive ? 'Screen Reader [ON]' : 'Screen Reader Access'}
+          <span className="hidden sm:inline">|</span>
+          <span onClick={toggleScreenReader} className="hidden sm:inline" style={{ cursor: 'pointer', color: screenReaderActive ? '#34d399' : '#94a3b8', fontWeight: screenReaderActive ? 700 : 400 }}>
+            {screenReaderActive ? 'Reader [ON]' : 'Screen Reader'}
           </span>
-          <span>|</span>
-          <span onClick={() => window.scrollTo({ top: 400, behavior: 'smooth' })} style={{ cursor: 'pointer', color: '#60a5fa' }}>Skip to main content</span>
         </div>
       </div>
 
@@ -339,50 +338,51 @@ export default function DoctorDashboard() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '20px 32px',
+        padding: '12px 16px',
         borderBottom: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0',
         backgroundColor: isDark ? 'rgba(2, 6, 23, 0.9)' : 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(10px)',
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        flexWrap: 'wrap',
+        gap: '10px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={() => router.push('/')}>
-          <div style={{ padding: '10px', backgroundColor: 'rgba(59, 130, 246, 0.2)', borderRadius: '12px', color: '#60a5fa' }}>
-            <Stethoscope size={22} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={() => router.push('/')}>
+          <div style={{ padding: '8px', backgroundColor: 'rgba(59, 130, 246, 0.2)', borderRadius: '10px', color: '#60a5fa' }}>
+            <Stethoscope size={20} />
           </div>
           <div>
-            <h1 style={{ fontSize: '18px', fontWeight: 700, margin: 0 }}>ArogyaKiosk • Doctor Command Center</h1>
-            <p style={{ fontSize: '12px', color: '#34d399', margin: 0 }}>Authenticated Session: Dr. Sharma (DOC-108) • Specialization: Ayurveda</p>
+            <h1 style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>Doctor Command Center</h1>
+            <p style={{ fontSize: '11px', color: '#34d399', margin: 0 }}>Session: Dr. Sharma (DOC-108)</p>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <button
             onClick={() => setIsDark(!isDark)}
             style={{
-              padding: '8px 14px',
-              borderRadius: '10px',
-              fontSize: '12px',
+              padding: '6px 10px',
+              borderRadius: '8px',
+              fontSize: '11px',
               fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '4px',
               backgroundColor: isDark ? '#0f172a' : '#ffffff',
               color: isDark ? '#facc15' : '#0f172a',
               border: isDark ? '1px solid #334155' : '1px solid #cbd5e1'
             }}
           >
-            {isDark ? <Sun size={14} /> : <Moon size={14} />}
-            <span>{isDark ? 'Light' : 'Dark'}</span>
+            {isDark ? <Sun size={13} /> : <Moon size={13} />}
           </button>
 
           <button
             onClick={handleDoctorLogout}
             style={{
-              padding: '8px 16px',
-              borderRadius: '10px',
-              fontSize: '12px',
+              padding: '6px 12px',
+              borderRadius: '8px',
+              fontSize: '11px',
               fontWeight: 600,
               cursor: 'pointer',
               backgroundColor: 'rgba(239, 68, 68, 0.1)',
@@ -390,10 +390,10 @@ export default function DoctorDashboard() {
               border: '1px solid rgba(239, 68, 68, 0.3)',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px'
+              gap: '4px'
             }}
           >
-            <LogOut size={14} /> Secure Logout
+            <LogOut size={13} /> Logout
           </button>
         </div>
       </header>
@@ -402,78 +402,73 @@ export default function DoctorDashboard() {
       <div style={{
         backgroundColor: isDark ? '#060a12' : '#e2e8f0',
         borderBottom: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1',
-        padding: '12px 32px',
+        padding: '8px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '16px'
+        gap: '10px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap', fontSize: '13px', fontWeight: 700 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#10b981' }} onClick={() => router.push('/')}>
-            <HomeIcon size={16} /> Home
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap', fontSize: '11px', fontWeight: 700 }}>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: '#10b981' }} onClick={() => router.push('/')}>
+            <HomeIcon size={14} /> Home
           </span>
-          <span onClick={() => setModalContent({ title: 'About Us - Ministry of Ayush & ArogyaKiosk', body: 'ArogyaKiosk is an AI-powered decentralized health platform developed for Smart India Hackathon.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <FileTextIcon size={16} /> About Us
+          <span onClick={() => setModalContent({ title: 'About Command Gateway', body: 'Authorized physician terminal for tele-triage, RAG interaction review, and e-prescriptions.' })} style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
+            <FileTextIcon size={14} /> About
           </span>
-          <span onClick={() => setModalContent({ title: 'Acts & Rules Compliance', body: 'Operating under national telemedicine guidelines and Ministry of Ayush clinical protocols.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <BookOpen size={16} /> Acts & Rules
-          </span>
-          <span onClick={() => setModalContent({ title: 'System Notifications', body: '• ChromaDB RAG Vector search engine synchronized.\n• All Kiosk authentication endpoints active.' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <Bell size={16} /> Notification
-          </span>
-          <span onClick={() => setModalContent({ title: 'Contact Ministry Support', body: 'AYUSH BHAWAN, NEW DELHI - 110023\nSupport Email: support@arogyakiosk.gov.in' })} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
-            <PhoneCall size={16} /> Contact Us
+          <span onClick={() => setModalContent({ title: 'Telemedicine Compliance', body: 'Compliant with national digital health protocols and Ministry of Ayush clinical guidelines.' })} style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', color: isDark ? '#cbd5e1' : '#334155' }}>
+            <BookOpen size={14} /> Protocol
           </span>
         </div>
       </div>
 
-      {/* Main Content: MASTER-DETAIL SPLIT VIEW */}
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '30px 24px', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      {/* Main Content: MASTER-DETAIL VIEW */}
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '16px', width: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '16px' }}>
         
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
           <div>
-            <h2 style={{ fontSize: '26px', fontWeight: 900, margin: 0 }}>Recent Clinical Cases</h2>
-            <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: '2px 0 0 0' }}>Select a patient case from the left to review the AI-prepared clinical context in a single file.</p>
+            <h2 style={{ fontSize: '20px', fontWeight: 900, margin: 0 }}>Recent Clinical Cases</h2>
+            <p style={{ fontSize: '12px', color: isDark ? '#94a3b8' : '#64748b', margin: '2px 0 0 0' }}>Review AI-prepared clinical context and e-sign prescriptions.</p>
           </div>
 
           <button
             onClick={fetchQueue}
             style={{
-              padding: '10px 18px',
-              borderRadius: '12px',
+              padding: '8px 14px',
+              borderRadius: '10px',
               backgroundColor: isDark ? '#0f172a' : '#ffffff',
               color: '#10b981',
               border: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1',
               cursor: 'pointer',
               fontWeight: 700,
+              fontSize: '12px',
               display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
           >
-            <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
-            <span>Refresh Cases</span>
+            <RefreshCw size={13} className={loading ? 'animate-spin' : ''} />
+            <span>Refresh</span>
           </button>
         </div>
 
-        {/* SPLIT LAYOUT: Left List & Right Unified Patient File */}
-        <div style={{ display: 'grid', gridTemplateColumns: '340px 1fr', gap: '24px', alignItems: 'start' }}>
+        {/* RESPONSIVE MASTER-DETAIL CONTAINER */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', alignItems: 'start' }}>
           
-          {/* LEFT: Patient Cases List */}
+          {/* LEFT: Cases List */}
           <div style={{
             backgroundColor: isDark ? '#0f172a' : '#ffffff',
             border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0',
-            borderRadius: '24px',
-            padding: '16px',
+            borderRadius: '20px',
+            padding: '12px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
-            maxHeight: '75vh',
+            gap: '8px',
+            maxHeight: '65vh',
             overflowY: 'auto'
           }}>
             {queue.length === 0 ? (
-              <p style={{ textAlign: 'center', color: '#94a3b8', padding: '20px', fontSize: '13px' }}>No active cases.</p>
+              <p style={{ textAlign: 'center', color: '#94a3b8', padding: '20px', fontSize: '12px' }}>No active cases.</p>
             ) : (
               queue.map((item) => {
                 const isSelected = selectedPatient?.id === item.id;
@@ -482,173 +477,171 @@ export default function DoctorDashboard() {
                     key={item.id}
                     onClick={() => setSelectedPatient(item)}
                     style={{
-                      padding: '16px',
-                      borderRadius: '16px',
+                      padding: '12px',
+                      borderRadius: '14px',
                       cursor: 'pointer',
                       backgroundColor: isSelected ? (isDark ? '#064e3b' : '#d1fae5') : (isDark ? '#020617' : '#f8fafc'),
                       border: isSelected ? '2px solid #10b981' : (isDark ? '1px solid #1e293b' : '1px solid #cbd5e1'),
                       display: 'flex',
                       justifyContent: 'space-between',
-                      alignItems: 'center',
-                      transition: 'all 0.2s'
+                      alignItems: 'center'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       <div style={{
-                        width: '38px', height: '38px', borderRadius: '50%',
+                        width: '32px', height: '32px', borderRadius: '50%',
                         backgroundColor: isSelected ? '#10b981' : (isDark ? '#1e293b' : '#e2e8f0'),
                         color: isSelected ? '#fff' : (isDark ? '#34d399' : '#0f172a'),
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '15px'
+                        display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '13px'
                       }}>
                         {item.name ? item.name.charAt(0).toUpperCase() : 'P'}
                       </div>
                       <div>
-                        <div style={{ fontSize: '15px', fontWeight: 800, color: isSelected ? '#34d399' : (isDark ? '#fff' : '#0f172a') }}>
+                        <div style={{ fontSize: '13px', fontWeight: 800, color: isSelected ? '#34d399' : (isDark ? '#fff' : '#0f172a') }}>
                           {item.name || 'Patient'}
                         </div>
-                        <div style={{ fontSize: '11px', color: '#94a3b8' }}>
-                          {item.age || '25'} years • {item.gender || 'Male'}
+                        <div style={{ fontSize: '10px', color: '#94a3b8' }}>
+                          {item.age || '25'} yrs • {item.gender || 'Male'}
                         </div>
-                        <div style={{ fontSize: '10px', color: '#38bdf8', fontWeight: 700, marginTop: '2px' }}>
-                          {item.caseType || 'AYUSH'} CASE • {item.status === 'Approved & E-Signed' ? '✓ VERIFIED' : 'PENDING'}
+                        <div style={{ fontSize: '9px', color: '#38bdf8', fontWeight: 700, marginTop: '2px' }}>
+                          {item.caseType || 'AYUSH'} • {item.status === 'Approved & E-Signed' ? '✓ VERIFIED' : 'PENDING'}
                         </div>
                       </div>
                     </div>
-                    <ChevronRight size={18} color={isSelected ? '#34d399' : '#94a3b8'} />
+                    <ChevronRight size={16} color={isSelected ? '#34d399' : '#94a3b8'} />
                   </div>
                 );
               })
             )}
           </div>
 
-          {/* RIGHT: Unified Single File Patient Context Panel */}
+          {/* RIGHT: Unified Patient Context Panel */}
           {selectedPatient ? (
             <div style={{
               backgroundColor: isDark ? '#0f172a' : '#ffffff',
               border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0',
-              borderRadius: '24px',
-              padding: '32px',
+              borderRadius: '20px',
+              padding: '20px 16px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '24px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.15)'
+              gap: '16px',
+              boxShadow: '0 15px 35px rgba(0,0,0,0.15)'
             }}>
               
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', paddingBottom: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', paddingBottom: '12px' }}>
                 <div>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI-Prepared Patient Context File</span>
-                  <h3 style={{ fontSize: '26px', fontWeight: 900, margin: '2px 0 0 0' }}>{selectedPatient.name || 'Patient Profile'}</h3>
-                  <p style={{ fontSize: '12px', color: '#94a3b8', margin: 0 }}>Terminal ID: {selectedPatient.patient_id}</p>
+                  <span style={{ fontSize: '10px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase' }}>Clinical Context File</span>
+                  <h3 style={{ fontSize: '20px', fontWeight: 900, margin: '2px 0 0 0' }}>{selectedPatient.name || 'Patient Profile'}</h3>
+                  <p style={{ fontSize: '11px', color: '#94a3b8', margin: 0 }}>Terminal: {selectedPatient.patient_id}</p>
                 </div>
                 <span style={{
-                  padding: '6px 14px', borderRadius: '9999px', fontSize: '12px', fontWeight: 700,
+                  padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 700,
                   backgroundColor: selectedPatient.status === 'Approved & E-Signed' ? 'rgba(16,185,129,0.15)' : 'rgba(245,158,11,0.15)',
                   color: selectedPatient.status === 'Approved & E-Signed' ? '#34d399' : '#f59e0b'
                 }}>
-                  {selectedPatient.status === 'Approved & E-Signed' ? '✓ Physician Verified' : 'Pending Verification'}
+                  {selectedPatient.status === 'Approved & E-Signed' ? '✓ Verified' : 'Pending'}
                 </span>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Patient Information</h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px' }}>
-                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '12px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                    <span style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Name</span>
-                    <strong style={{ fontSize: '14px' }}>{selectedPatient.name || 'N/A'}</strong>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <h4 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Patient Details</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '8px' }}>
+                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '10px', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
+                    <span style={{ fontSize: '9px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Name</span>
+                    <strong style={{ fontSize: '13px' }}>{selectedPatient.name || 'N/A'}</strong>
                   </div>
-                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '12px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                    <span style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Age</span>
-                    <strong style={{ fontSize: '14px' }}>{selectedPatient.age || 'N/A'} yrs</strong>
+                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '10px', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
+                    <span style={{ fontSize: '9px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Age</span>
+                    <strong style={{ fontSize: '13px' }}>{selectedPatient.age || 'N/A'} yrs</strong>
                   </div>
-                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '12px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                    <span style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Gender</span>
-                    <strong style={{ fontSize: '14px' }}>{selectedPatient.gender || 'N/A'}</strong>
-                  </div>
-                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '12px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                    <span style={{ fontSize: '10px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Case Type</span>
-                    <strong style={{ fontSize: '14px', color: '#34d399' }}>{selectedPatient.caseType || 'AYUSH'}</strong>
+                  <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '10px', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
+                    <span style={{ fontSize: '9px', color: '#94a3b8', textTransform: 'uppercase', display: 'block' }}>Case</span>
+                    <strong style={{ fontSize: '13px', color: '#34d399' }}>{selectedPatient.caseType || 'AYUSH'}</strong>
                   </div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Chief Complaint & Symptoms</h4>
-                <div style={{ padding: '16px', backgroundColor: isDark ? '#020617' : '#f8fafc', borderRadius: '14px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', fontSize: '14px', lineHeight: 1.5 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <h4 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Symptoms & Complaints</h4>
+                <div style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', fontSize: '13px', lineHeight: 1.5 }}>
                   {selectedPatient.symptoms}
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
-                <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '16px', borderRadius: '14px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
-                    <ShieldAlert size={14} /> ChromaDB RAG Safety Check
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px' }}>
+                <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
+                  <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: '#38bdf8', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
+                    <ShieldAlert size={12} /> ChromaDB RAG Check
                   </span>
-                  <p style={{ fontSize: '13px', margin: 0, color: isDark ? '#cbd5e1' : '#475569' }}>{selectedPatient.rag_safety}</p>
+                  <p style={{ fontSize: '12px', margin: 0, color: isDark ? '#cbd5e1' : '#475569' }}>{selectedPatient.rag_safety}</p>
                 </div>
 
-                <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '16px', borderRadius: '14px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
-                    <History size={14} /> ABHA Vault & Medical History
+                <div style={{ backgroundColor: isDark ? '#020617' : '#f8fafc', padding: '12px', borderRadius: '10px', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1' }}>
+                  <span style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', color: '#34d399', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
+                    <History size={12} /> Vault History
                   </span>
-                  <p style={{ fontSize: '13px', margin: 0, color: isDark ? '#cbd5e1' : '#475569' }}>{selectedPatient.history}</p>
+                  <p style={{ fontSize: '12px', margin: 0, color: isDark ? '#cbd5e1' : '#475569' }}>{selectedPatient.history}</p>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <h4 style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Current Prescription / Treatment Draft</h4>
-                <div style={{ padding: '16px', backgroundColor: isDark ? '#064e3b' : '#d1fae5', borderRadius: '14px', border: '1px solid #10b981', fontSize: '14px', color: isDark ? '#34d399' : '#065f46', fontWeight: 600 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <h4 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#60a5fa', margin: 0 }}>Current Prescription Draft</h4>
+                <div style={{ padding: '12px', backgroundColor: isDark ? '#064e3b' : '#d1fae5', borderRadius: '10px', border: '1px solid #10b981', fontSize: '13px', color: isDark ? '#34d399' : '#065f46', fontWeight: 600 }}>
                   {selectedPatient.prescription || 'Pending doctor consultation.'}
                 </div>
               </div>
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', paddingTop: '12px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0' }}>
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {/* Action Buttons */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px', paddingTop: '10px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', width: '100%' }}>
                   <button
                     onClick={() => setActiveVideoCall(selectedPatient)}
                     style={{
-                      padding: '10px 16px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa',
-                      border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '12px', fontWeight: 700, fontSize: '13px',
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px'
+                      flex: 1, padding: '10px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa',
+                      border: '1px solid rgba(59, 130, 246, 0.3)', borderRadius: '10px', fontWeight: 700, fontSize: '12px',
+                      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px'
                     }}
                   >
-                    <Video size={16} /> Start Video Consult
+                    <Video size={14} /> Video Call
                   </button>
 
                   <button
                     onClick={() => setActivePrescriptionModal(selectedPatient)}
                     style={{
-                      padding: '10px 16px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399',
-                      border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '12px', fontWeight: 700, fontSize: '13px',
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px'
+                      flex: 1, padding: '10px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399',
+                      border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '10px', fontWeight: 700, fontSize: '12px',
+                      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px'
                     }}
                   >
-                    <PlusCircle size={16} /> Add Rx & Upload Slip
+                    <PlusCircle size={14} /> Add Rx
                   </button>
                 </div>
 
-                {selectedPatient.status !== 'Approved & E-Signed' ? (
-                  <button
-                    onClick={() => handleApprove(selectedPatient.id)}
-                    style={{
-                      padding: '12px 24px', backgroundColor: '#10b981', color: '#ffffff',
-                      border: 'none', borderRadius: '12px', fontWeight: 800, fontSize: '14px',
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px',
-                      boxShadow: '0 4px 15px rgba(16, 185, 129, 0.4)'
-                    }}
-                  >
-                    <Check size={18} /> E-Sign & Verify Case
-                  </button>
-                ) : (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#34d399', fontSize: '13px', fontWeight: 800 }}>
-                    <CheckCircle2 size={18} /> Case Verified & E-Signed ✓
-                  </div>
-                )}
+                <div style={{ width: '100%', marginTop: '4px' }}>
+                  {selectedPatient.status !== 'Approved & E-Signed' ? (
+                    <button
+                      onClick={() => handleApprove(selectedPatient.id)}
+                      style={{
+                        width: '100%', padding: '12px', backgroundColor: '#10b981', color: '#ffffff',
+                        border: 'none', borderRadius: '10px', fontWeight: 800, fontSize: '13px',
+                        cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                        boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+                      }}
+                    >
+                      <Check size={16} /> E-Sign & Verify Case
+                    </button>
+                  ) : (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', color: '#34d399', fontSize: '12px', fontWeight: 800, padding: '8px' }}>
+                      <CheckCircle2 size={16} /> Case Verified & E-Signed ✓
+                    </div>
+                  )}
+                </div>
               </div>
 
             </div>
           ) : (
-            <div style={{ padding: '60px', textAlign: 'center', color: '#94a3b8' }}>
-              Select a patient from the left list to view their complete medical file.
+            <div style={{ padding: '40px', textAlign: 'center', color: '#94a3b8', fontSize: '13px' }}>
+              Select a patient from the list to view their complete file.
             </div>
           )}
 
@@ -656,271 +649,157 @@ export default function DoctorDashboard() {
 
       </main>
 
-      {/* Interactive Modal for Sub-Navbar items */}
-      {modalContent && (
-        <div style={{
-          position: 'fixed',
-          top: 0, left: 0, width: '100vw', height: '100vh',
-          backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(5px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '20px'
-        }}>
-          <div style={{
-            backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-            borderRadius: '24px', padding: '32px', maxWidth: '500px', width: '100%',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '16px'
-          }}>
-            <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0, color: '#10b981' }}>{modalContent.title}</h3>
-            <p style={{ fontSize: '14px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{modalContent.body}</p>
-            <button
-              onClick={() => setModalContent(null)}
-              style={{ marginTop: '12px', padding: '12px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ADD PRESCRIPTION & UPLOAD MEDICAL SLIP MODAL */}
+      {/* Prescription Modal */}
       {activePrescriptionModal && (
         <div style={{
           position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
           backgroundColor: 'rgba(2, 6, 23, 0.85)', backdropFilter: 'blur(8px)', zIndex: 1300,
-          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px'
+          display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px'
         }}>
           <div style={{
             backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-            borderRadius: '24px', width: '100%', maxWidth: '560px', padding: '30px', boxShadow: '0 25px 50px rgba(0,0,0,0.5)',
-            display: 'flex', flexDirection: 'column', gap: '20px', maxHeight: '90vh', overflowY: 'auto'
+            borderRadius: '20px', width: '100%', maxWidth: '480px', padding: '20px', boxShadow: '0 25px 50px rgba(0,0,0,0.5)',
+            display: 'flex', flexDirection: 'column', gap: '14px', maxHeight: '90vh', overflowY: 'auto'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>Add Prescription & Upload Medical Slip</h3>
-                <p style={{ fontSize: '12px', color: '#94a3b8', margin: '2px 0 0 0' }}>Patient: {activePrescriptionModal.name} ({activePrescriptionModal.patient_id})</p>
+                <h3 style={{ fontSize: '16px', fontWeight: 800, margin: 0 }}>Add Prescription & Upload Slip</h3>
+                <p style={{ fontSize: '11px', color: '#94a3b8', margin: '2px 0 0 0' }}>Patient: {activePrescriptionModal.name}</p>
               </div>
               <button onClick={() => setActivePrescriptionModal(null)} style={{ background: 'none', border: 'none', color: isDark ? '#fff' : '#0f172a', cursor: 'pointer' }}>
-                <X size={20} />
+                <X size={18} />
               </button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <label style={{ fontSize: '12px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase' }}>Prescribed Medicines / Treatment (Dwai)</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={{ fontSize: '11px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase' }}>Prescribed Medicines / Treatment</label>
               <textarea
                 rows={3}
-                placeholder="e.g. 1. Ashwagandha 500mg twice daily post meals&#10;2. Dashmoolarishta 15ml"
+                placeholder="e.g. 1. Ashwagandha 500mg twice daily..."
                 value={newRxText}
                 onChange={(e) => setNewRxText(e.target.value)}
-                style={{ padding: '12px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '10px', color: isDark ? '#fff' : '#0f172a', fontSize: '13px', outline: 'none', resize: 'none' }}
+                style={{ padding: '10px', backgroundColor: isDark ? '#020617' : '#f8fafc', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', borderRadius: '8px', color: isDark ? '#fff' : '#0f172a', fontSize: '13px', outline: 'none', resize: 'none' }}
               />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <label style={{ fontSize: '12px', fontWeight: 700, color: '#60a5fa', textTransform: 'uppercase' }}>Upload Medical Slip / Prescription Document (PDF, Image, Scan)</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={{ fontSize: '11px', fontWeight: 700, color: '#60a5fa', textTransform: 'uppercase' }}>Upload Prescription Slip (PDF / Image)</label>
               <label style={{
                 border: isDark ? '2px dashed #334155' : '2px dashed #cbd5e1',
-                padding: '20px',
-                borderRadius: '12px',
+                padding: '14px',
+                borderRadius: '10px',
                 textAlign: 'center',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '4px',
                 backgroundColor: isDark ? 'rgba(255,255,255,0.02)' : '#f8fafc'
               }}>
-                <Upload size={24} color="#60a5fa" />
-                <span style={{ fontSize: '13px', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569' }}>Click to upload doctor signed prescription or report</span>
+                <Upload size={20} color="#60a5fa" />
+                <span style={{ fontSize: '11px', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569' }}>Click to upload slip or signed report</span>
                 <input type="file" multiple onChange={handleFileUploadByDoctor} style={{ display: 'none' }} />
               </label>
 
               {uploadedSlipFiles.length > 0 && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '6px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '4px' }}>
                   {uploadedSlipFiles.map((fname, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: '#60a5fa' }}>
-                      <FileText size={14} /> <span>{fname}</span>
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', color: '#60a5fa' }}>
+                      <FileText size={12} /> <span>{fname}</span>
                     </div>
                   ))}
                 </div>
               )}
             </div>
 
-            <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', gap: '8px', marginTop: '6px' }}>
               <button
                 onClick={() => setActivePrescriptionModal(null)}
-                style={{ flex: 1, padding: '12px', backgroundColor: '#1e293b', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}
+                style={{ flex: 1, padding: '10px', backgroundColor: '#1e293b', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 700, cursor: 'pointer', fontSize: '12px' }}
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleSavePrescriptionToPatientFolder(activePrescriptionModal.patient_id)}
-                style={{ flex: 2, padding: '12px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 800, cursor: 'pointer', boxShadow: '0 4px 12px rgba(16,185,129,0.3)' }}
+                style={{ flex: 2, padding: '10px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 800, cursor: 'pointer', fontSize: '12px' }}
               >
-                Save & Sync to Patient Folder
+                Save & Sync
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* WORKING VIDEO CALL MODAL OVERLAY */}
+      {/* Video Call Modal */}
       {activeVideoCall && (
         <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: 'rgba(2, 6, 23, 0.95)',
-          backdropFilter: 'blur(10px)',
-          zIndex: 1000,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '16px 24px',
-          boxSizing: 'border-box',
-          overflowY: 'auto'
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: 'rgba(2, 6, 23, 0.95)', backdropFilter: 'blur(10px)', zIndex: 1000,
+          display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+          padding: '16px', boxSizing: 'border-box', overflowY: 'auto'
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
             <div>
-              <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                Secure Telehealth Consult: <span style={{ color: '#34d399' }}>{activeVideoCall.name || activeVideoCall.patient_id}</span>
+              <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                Consult: <span style={{ color: '#34d399' }}>{activeVideoCall.name}</span>
               </h3>
-              <p style={{ fontSize: '12px', color: '#94a3b8', margin: 0 }}>Terminal ID: {activeVideoCall.patient_id} • Encrypted WebRTC Stream</p>
+              <p style={{ fontSize: '10px', color: '#94a3b8', margin: 0 }}>ID: {activeVideoCall.patient_id}</p>
             </div>
             <button
               onClick={() => setActiveVideoCall(null)}
-              style={{
-                background: 'rgba(255,255,255,0.1)',
-                border: 'none',
-                padding: '8px',
-                borderRadius: '50%',
-                color: '#ffffff',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
+              style={{ background: 'rgba(255,255,255,0.1)', border: 'none', padding: '6px', borderRadius: '50%', color: '#ffffff', cursor: 'pointer' }}
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '16px', maxWidth: '1200px', margin: '12px auto', width: '100%', flex: 1, maxHeight: 'calc(100vh - 160px)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px', maxWidth: '1200px', margin: '12px auto', width: '100%', flex: 1 }}>
             <div style={{
-              backgroundColor: '#0f172a',
-              borderRadius: '20px',
-              border: '1px solid #1e293b',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              overflow: 'hidden',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
-              minHeight: '280px'
+              backgroundColor: '#0f172a', borderRadius: '16px', border: '1px solid #1e293b',
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              position: 'relative', overflow: 'hidden', minHeight: '220px'
             }}>
               {!isVideoOff ? (
-                <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                  <div style={{ width: '70px', height: '70px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399' }}>
-                    <Video size={32} />
+                <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399' }}>
+                    <Video size={26} />
                   </div>
-                  <span style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>Live Video Feed: {activeVideoCall.name || 'Patient'}</span>
-                  <span style={{ fontSize: '11px', color: '#34d399', backgroundColor: 'rgba(16,185,129,0.1)', padding: '4px 10px', borderRadius: '9999px' }}>Connected (HD 1080p)</span>
+                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#ffffff' }}>Live Stream Active</span>
                 </div>
               ) : (
-                <div style={{ color: '#94a3b8', fontSize: '14px' }}>Video Stream Paused</div>
+                <div style={{ color: '#94a3b8', fontSize: '13px' }}>Video Stream Off</div>
               )}
-
-              <div style={{ position: 'absolute', bottom: '16px', right: '16px', width: '120px', height: '80px', backgroundColor: '#020617', borderRadius: '10px', border: '1px solid #334155', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: '#94a3b8' }}>
-                Doctor (You)
-              </div>
             </div>
 
             <div style={{
-              backgroundColor: '#0f172a',
-              borderRadius: '20px',
-              border: '1px solid #1e293b',
-              padding: '20px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              overflowY: 'auto'
+              backgroundColor: '#0f172a', borderRadius: '16px', border: '1px solid #1e293b',
+              padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px'
             }}>
-              <h4 style={{ fontSize: '13px', fontWeight: 800, textTransform: 'uppercase', color: '#34d399', margin: 0 }}>Consultation Notes</h4>
-              <div style={{ fontSize: '12px', color: '#cbd5e1', lineHeight: 1.4 }}>
-                <strong>Assessment:</strong> {activeVideoCall.symptoms}
-              </div>
-              <div style={{ fontSize: '12px', color: '#cbd5e1', lineHeight: 1.4 }}>
-                <strong>RAG Safety:</strong> {activeVideoCall.rag_safety}
-              </div>
-              <div style={{ fontSize: '12px', color: '#cbd5e1', lineHeight: 1.4 }}>
-                <strong>Prescription Draft:</strong> {activeVideoCall.prescription}
-              </div>
+              <h4 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#34d399', margin: 0 }}>Consult Notes</h4>
+              <div style={{ fontSize: '11px', color: '#cbd5e1' }}><strong>Symptoms:</strong> {activeVideoCall.symptoms}</div>
+              <div style={{ fontSize: '11px', color: '#cbd5e1' }}><strong>RAG:</strong> {activeVideoCall.rag_safety}</div>
+              <div style={{ fontSize: '11px', color: '#cbd5e1' }}><strong>Rx:</strong> {activeVideoCall.prescription}</div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', maxWidth: '1200px', margin: '0 auto', width: '100%', paddingBottom: '8px' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', maxWidth: '1200px', margin: '0 auto', width: '100%', flexWrap: 'wrap' }}>
             <button
               onClick={() => setIsMuted(!isMuted)}
-              style={{
-                padding: '12px 18px',
-                borderRadius: '14px',
-                backgroundColor: isMuted ? '#dc2626' : '#1e293b',
-                color: '#ffffff',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontWeight: 700,
-                fontSize: '13px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-              }}
+              style={{ padding: '10px 14px', borderRadius: '10px', backgroundColor: isMuted ? '#dc2626' : '#1e293b', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '12px' }}
             >
-              {isMuted ? <MicOff size={16} /> : <Mic size={16} />}
-              <span>{isMuted ? 'Unmute' : 'Mute'}</span>
+              {isMuted ? 'Unmute' : 'Mute'}
             </button>
-
             <button
               onClick={() => setIsVideoOff(!isVideoOff)}
-              style={{
-                padding: '12px 18px',
-                borderRadius: '14px',
-                backgroundColor: isVideoOff ? '#dc2626' : '#1e293b',
-                color: '#ffffff',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontWeight: 700,
-                fontSize: '13px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-              }}
+              style={{ padding: '10px 14px', borderRadius: '10px', backgroundColor: isVideoOff ? '#dc2626' : '#1e293b', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '12px' }}
             >
-              <Video size={16} />
-              <span>{isVideoOff ? 'Start Video' : 'Stop Video'}</span>
+              {isVideoOff ? 'Start Video' : 'Stop Video'}
             </button>
-
             <button
               onClick={() => setActiveVideoCall(null)}
-              style={{
-                padding: '12px 22px',
-                borderRadius: '14px',
-                backgroundColor: '#dc2626',
-                color: '#ffffff',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontWeight: 700,
-                fontSize: '13px',
-                boxShadow: '0 4px 15px rgba(220, 38, 38, 0.4)'
-              }}
+              style={{ padding: '10px 18px', borderRadius: '10px', backgroundColor: '#dc2626', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '12px' }}
             >
-              <PhoneOff size={16} />
-              <span>End Call</span>
+              End Call
             </button>
           </div>
         </div>
@@ -928,20 +807,22 @@ export default function DoctorDashboard() {
 
       {/* Footer */}
       <footer style={{
-        padding: '20px 32px',
+        padding: '14px 16px',
         borderTop: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        fontSize: '12px',
+        flexWrap: 'wrap',
+        gap: '6px',
+        fontSize: '11px',
         color: '#94a3b8',
         backgroundColor: isDark ? 'rgba(2, 6, 23, 0.9)' : 'rgba(255, 255, 255, 0.9)'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ShieldCheck size={16} color="#60a5fa" />
-          <span>Doctor Telehealth Console • HIPAA & ABHA Compliant</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <ShieldCheck size={14} color="#60a5fa" />
+          <span>Telehealth Console • HIPAA & ABHA Compliant</span>
         </div>
-        <div>ArogyaKiosk SIH Enterprise Prototype</div>
+        <div>ArogyaKiosk Prototype</div>
       </footer>
     </div>
   );
