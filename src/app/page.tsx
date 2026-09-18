@@ -132,38 +132,38 @@ export default function Home() {
       fontFamily: 'sans-serif',
       fontSize: `${fontSizeScale}px`,
       transition: 'all 0.3s ease',
-      position: 'relative'
+      position: 'relative',
+      width: '100%',
+      overflowX: 'hidden'
     }}>
       
       {/* 1. GOVERNMENT TOP BAR */}
       <div style={{
         backgroundColor: '#0b1329',
         borderBottom: '1px solid rgba(255,255,255,0.1)',
-        padding: '8px 32px',
+        padding: '8px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '12px',
-        fontSize: '12px',
+        gap: '10px',
+        fontSize: '11px',
         color: '#94a3b8'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span style={{ backgroundColor: '#ff9933', width: '14px', height: '10px', display: 'inline-block' }}></span>
-          <span style={{ fontWeight: 700, color: '#fff' }}>Government of India | भारत सरकार</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+          <span style={{ backgroundColor: '#ff9933', width: '12px', height: '8px', display: 'inline-block' }}></span>
+          <span style={{ fontWeight: 700, color: '#fff' }}>भारत सरकार | Govt of India</span>
           <span style={{ color: '#10b981', fontWeight: 600 }}>• Ministry of Ayush</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', gap: '4px' }}>
             <button onClick={() => setFontSizeScale(14)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A-</button>
             <button onClick={() => setFontSizeScale(16)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A</button>
             <button onClick={() => setFontSizeScale(18)} style={{ background: '#1e293b', color: '#fff', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px', cursor: 'pointer', fontSize: '11px' }}>A+</button>
           </div>
-          <span>|</span>
-          <span style={{ cursor: 'pointer' }}>Screen Reader Access</span>
-          <span>|</span>
-          <span style={{ cursor: 'pointer' }}>Skip to main content</span>
+          <span className="hidden sm:inline">|</span>
+          <span className="hidden sm:inline" style={{ cursor: 'pointer' }}>Screen Reader Access</span>
         </div>
       </div>
 
@@ -172,97 +172,97 @@ export default function Home() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '20px 32px',
+        padding: '14px 16px',
         borderBottom: isDark ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid #e2e8f0',
         backgroundColor: isDark ? 'rgba(2, 6, 23, 0.9)' : 'rgba(255, 255, 255, 0.9)',
         backdropFilter: 'blur(10px)',
         position: 'sticky',
         top: 0,
-        zIndex: 50
+        zIndex: 50,
+        flexWrap: 'wrap',
+        gap: '12px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={() => router.push('/')}>
-          <div style={{ padding: '10px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '12px', color: '#10b981' }}>
-            <HeartPulse size={24} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }} onClick={() => router.push('/')}>
+          <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '10px', color: '#10b981' }}>
+            <HeartPulse size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '18px', fontWeight: 900, letterSpacing: '0.05em', display: 'block' }}>
+            <span style={{ fontSize: '16px', fontWeight: 900, letterSpacing: '0.05em', display: 'block' }}>
               AROGYAKIOSK
             </span>
-            <span style={{ fontSize: '9px', color: '#34d399', fontWeight: 700, letterSpacing: '0.1em' }}>
-              AI + AYUSH SMART HEALTH GATEWAY
+            <span style={{ fontSize: '8px', color: '#34d399', fontWeight: 700, letterSpacing: '0.08em' }}>
+              AI + AYUSH GATEWAY
             </span>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <a
             href="tel:108"
             style={{
-              padding: '8px 14px',
-              borderRadius: '10px',
-              fontSize: '12px',
+              padding: '7px 12px',
+              borderRadius: '8px',
+              fontSize: '11px',
               fontWeight: 800,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '4px',
               backgroundColor: '#dc2626',
               color: '#ffffff',
               border: 'none',
-              textDecoration: 'none',
-              boxShadow: '0 4px 12px rgba(220, 38, 38, 0.4)'
+              textDecoration: 'none'
             }}
           >
-            <PhoneCall size={14} />
-            <span>SOS 108</span>
+            <PhoneCall size={13} />
+            <span>108</span>
           </a>
 
           <button
             onClick={() => setShowHelp(true)}
             style={{
-              padding: '8px 14px',
-              borderRadius: '10px',
-              fontSize: '12px',
+              padding: '7px 12px',
+              borderRadius: '8px',
+              fontSize: '11px',
               fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '4px',
               backgroundColor: isDark ? '#0f172a' : '#ffffff',
               color: '#34d399',
               border: isDark ? '1px solid #334155' : '1px solid #cbd5e1'
             }}
           >
-            <HelpCircle size={14} />
-            <span>Guide</span>
+            <HelpCircle size={13} />
+            <span className="hidden sm:inline">Guide</span>
           </button>
 
           <button
             onClick={handleThemeToggle}
             style={{
-              padding: '8px 14px',
-              borderRadius: '10px',
-              fontSize: '12px',
+              padding: '7px 12px',
+              borderRadius: '8px',
+              fontSize: '11px',
               fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '4px',
               backgroundColor: isDark ? '#0f172a' : '#ffffff',
               color: isDark ? '#facc15' : '#0f172a',
               border: isDark ? '1px solid #334155' : '1px solid #cbd5e1'
             }}
           >
-            {isDark ? <Sun size={14} /> : <Moon size={14} />}
-            <span>{isDark ? 'Light' : 'Dark'}</span>
+            {isDark ? <Sun size={13} /> : <Moon size={13} />}
           </button>
 
           <button
             onClick={() => router.push('/doctor')}
             style={{
-              padding: '8px 16px',
-              borderRadius: '10px',
-              fontSize: '13px',
+              padding: '7px 12px',
+              borderRadius: '8px',
+              fontSize: '12px',
               fontWeight: 600,
               cursor: 'pointer',
               display: 'flex',
@@ -273,176 +273,174 @@ export default function Home() {
               border: 'none'
             }}
           >
-            <Stethoscope size={14} color="#34d399" />
+            <Stethoscope size={13} color="#34d399" />
             <span>Doctor Login</span>
           </button>
         </div>
       </header>
 
       {/* Main Container */}
-      <main style={{ maxWidth: '1100px', margin: 'auto', padding: '60px 24px', width: '100%', display: 'flex', flexDirection: 'column', gap: '80px', boxSizing: 'border-box' }}>
+      <main style={{ maxWidth: '1100px', margin: 'auto', padding: '32px 16px', width: '100%', display: 'flex', flexDirection: 'column', gap: '48px', boxSizing: 'border-box' }}>
         
         {/* HERO SECTION */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+        <section style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '8px',
-              padding: '6px 16px',
+              gap: '6px',
+              padding: '4px 12px',
               backgroundColor: 'rgba(16, 185, 129, 0.1)',
               border: '1px solid rgba(16, 185, 129, 0.3)',
               borderRadius: '9999px',
               color: '#34d399',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600,
               textTransform: 'uppercase'
             }}>
-              <Sparkles size={14} color="#facc15" />
-              <span>Smart India Hackathon • Enterprise Prototype</span>
+              <Sparkles size={12} color="#facc15" />
+              <span>SIH Enterprise Prototype</span>
             </div>
 
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              padding: '6px 16px',
+              padding: '4px 12px',
               backgroundColor: 'rgba(59, 130, 246, 0.1)',
               border: '1px solid rgba(59, 130, 246, 0.3)',
               borderRadius: '9999px',
               color: '#60a5fa',
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600
             }}>
-              <Radio size={14} className="animate-pulse" />
-              <span>FastAPI + ChromaDB RAG Active</span>
+              <Radio size={12} className="animate-pulse" />
+              <span>FastAPI + ChromaDB Active</span>
             </div>
           </div>
 
-          <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 900, lineHeight: 1.1, margin: 0 }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.15, margin: 0 }}>
             Self Service, <br />
             <span style={{ color: '#34d399' }}>Simplified Health.</span>
           </h1>
 
-          <p style={{ fontSize: '1.15rem', color: isDark ? '#94a3b8' : '#475569', maxWidth: '750px', lineHeight: 1.6, margin: 0 }}>
+          <p style={{ fontSize: '1rem', color: isDark ? '#94a3b8' : '#475569', maxWidth: '750px', lineHeight: 1.6, margin: 0 }}>
             Next-gen decentralized AI triage kiosk. Instant local RAG-powered safety checks, ABHA ID sync, multi-stream AYUSH guidance, and live doctor consultations built for rural and urban healthcare centers.
           </p>
 
           {/* Action Cards Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginTop: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginTop: '12px' }}>
             <div 
               onClick={() => router.push('/patient/login')}
               style={{
-                padding: '36px',
-                borderRadius: '28px',
+                padding: '24px',
+                borderRadius: '20px',
                 cursor: 'pointer',
                 backgroundColor: isDark ? '#0f172a' : '#ffffff',
                 border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0',
-                boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.15)',
-                transition: 'transform 0.3s ease',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.15)',
+                transition: 'transform 0.2s ease',
                 position: 'relative',
                 overflow: 'hidden'
               }}
             >
-              <div style={{ position: 'absolute', top: 0, right: 0, width: '120px', height: '120px', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '50%', filter: 'blur(20px)' }}></div>
-              <div style={{ padding: '14px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '18px', width: 'fit-content', color: '#34d399', marginBottom: '20px' }}>
-                <Activity size={32} />
+              <div style={{ padding: '12px', backgroundColor: 'rgba(16, 185, 129, 0.2)', borderRadius: '14px', width: 'fit-content', color: '#34d399', marginBottom: '16px' }}>
+                <Activity size={26} />
               </div>
-              <h3 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                Patient Portal & AYUSH <ArrowRight size={22} color="#34d399" />
+              <h3 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                Patient Portal & AYUSH <ArrowRight size={20} color="#34d399" />
               </h3>
-              <p style={{ fontSize: '14px', color: isDark ? '#94a3b8' : '#64748b', lineHeight: 1.6 }}>
-                Login via ABHA or Mobile number. Choose from Ayurveda, Yoga, Unani, Siddha, and Homeopathy streams with voice-to-text RAG checks.
+              <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', lineHeight: 1.5, margin: 0 }}>
+                Login via ABHA or Mobile number. Select AYUSH / Allopathy streams with voice-to-text RAG checks.
               </p>
             </div>
 
             <div 
               onClick={() => router.push('/doctor')}
               style={{
-                padding: '36px',
-                borderRadius: '28px',
+                padding: '24px',
+                borderRadius: '20px',
                 cursor: 'pointer',
                 backgroundColor: isDark ? '#0f172a' : '#ffffff',
                 border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0',
-                boxShadow: '0 15px 35px -5px rgba(0, 0, 0, 0.15)',
-                transition: 'transform 0.3s ease',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.15)',
+                transition: 'transform 0.2s ease',
                 position: 'relative',
                 overflow: 'hidden'
               }}
             >
-              <div style={{ position: 'absolute', top: 0, right: 0, width: '120px', height: '120px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '50%', filter: 'blur(20px)' }}></div>
-              <div style={{ padding: '14px', backgroundColor: 'rgba(59, 130, 246, 0.2)', borderRadius: '18px', width: 'fit-content', color: '#60a5fa', marginBottom: '20px' }}>
-                <Stethoscope size={32} />
+              <div style={{ padding: '12px', backgroundColor: 'rgba(59, 130, 246, 0.2)', borderRadius: '14px', width: 'fit-content', color: '#60a5fa', marginBottom: '16px' }}>
+                <Stethoscope size={26} />
               </div>
-              <h3 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                Doctor Command Center <ArrowRight size={22} color="#60a5fa" />
+              <h3 style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                Doctor Command Center <ArrowRight size={20} color="#60a5fa" />
               </h3>
-              <p style={{ fontSize: '14px', color: isDark ? '#94a3b8' : '#64748b', lineHeight: 1.6 }}>
-                Access real-time patient triage queues, review AI risk alerts, monitor clinical safety flags, and e-sign digital prescriptions instantly.
+              <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', lineHeight: 1.5, margin: 0 }}>
+                Access live patient queues, review AI risk alerts, monitor clinical safety flags, and e-sign digital prescriptions.
               </p>
             </div>
           </div>
         </section>
 
         {/* SECTION 2: HOW IT WORKS */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div style={{ textAlign: 'center', maxWidth: '650px', margin: 'auto' }}>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Seamless Workflow</span>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, margin: '8px 0 12px 0' }}>How ArogyaKiosk Works</h2>
-            <p style={{ fontSize: '1rem', color: isDark ? '#94a3b8' : '#64748b' }}>Designed for extreme ease of use in public health centers and community clinics.</p>
+            <span style={{ fontSize: '11px', fontWeight: 700, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Seamless Workflow</span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, margin: '6px 0 8px 0' }}>How ArogyaKiosk Works</h2>
+            <p style={{ fontSize: '0.9rem', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Designed for extreme ease of use in public health centers and community clinics.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '32px', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ width: '45px', height: '45px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '18px' }}>01</div>
-              <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>ABHA / ID Verification</h3>
-              <p style={{ fontSize: '14px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.6 }}>Authenticate securely using your 14-digit ABHA ID or registered mobile number with password protection.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '18px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ width: '40px', height: '40px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '16px' }}>01</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>ABHA / ID Verification</h3>
+              <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.5 }}>Authenticate securely using your 14-digit ABHA ID or registered mobile number.</p>
             </div>
 
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '32px', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ width: '45px', height: '45px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '18px' }}>02</div>
-              <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>AI Triage & AYUSH Stream</h3>
-              <p style={{ fontSize: '14px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.6 }}>Select Allopathy or traditional AYUSH care (Ayurveda, Yoga, Unani, Siddha, Homeopathy) and speak/type symptoms in Hindi or English.</p>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '18px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ width: '40px', height: '40px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '16px' }}>02</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>AI Triage & AYUSH Stream</h3>
+              <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.5 }}>Select traditional AYUSH care or Allopathy and speak symptoms in Hindi or English.</p>
             </div>
 
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '32px', borderRadius: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{ width: '45px', height: '45px', backgroundColor: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '18px' }}>03</div>
-              <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>Doctor Sync & E-Sign</h3>
-              <p style={{ fontSize: '14px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.6 }}>Live queue syncs your case with the doctor's dashboard. Get instant digital prescriptions delivered via automated SMS/WhatsApp alerts.</p>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '18px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ width: '40px', height: '40px', backgroundColor: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '18px' }}>03</div>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>Doctor Sync & E-Sign</h3>
+              <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0, lineHeight: 1.5 }}>Live queue syncs case with the doctor. Get instant digital prescriptions via SMS/WhatsApp.</p>
             </div>
           </div>
         </section>
 
         {/* SECTION 3: KEY ENTERPRISE FEATURES */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <section style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div style={{ textAlign: 'center', maxWidth: '650px', margin: 'auto' }}>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#60a5fa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Cutting-Edge Tech</span>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, margin: '8px 0 12px 0' }}>Enterprise & Security Highlights</h2>
-            <p style={{ fontSize: '1rem', color: isDark ? '#94a3b8' : '#64748b' }}>Engineered to meet national digital health infrastructure standards.</p>
+            <span style={{ fontSize: '11px', fontWeight: 700, color: '#60a5fa', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Cutting-Edge Tech</span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, margin: '6px 0 8px 0' }}>Security & Highlights</h2>
+            <p style={{ fontSize: '0.9rem', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Engineered to meet national digital health infrastructure standards.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '20px', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-              <div style={{ padding: '10px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399', borderRadius: '12px' }}><Cpu size={22} /></div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '20px', borderRadius: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+              <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.1)', color: '#34d399', borderRadius: '10px' }}><Cpu size={20} /></div>
               <div>
-                <h4 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 6px 0' }}>Local RAG Engine</h4>
-                <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>ChromaDB vector search cross-checks clinical safety and herb-drug interactions.</p>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 4px 0' }}>Local RAG Engine</h4>
+                <p style={{ fontSize: '12px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>ChromaDB vector search cross-checks safety and interactions.</p>
               </div>
             </div>
 
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '20px', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-              <div style={{ padding: '10px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa', borderRadius: '12px' }}><Lock size={22} /></div>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '20px', borderRadius: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+              <div style={{ padding: '8px', backgroundColor: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa', borderRadius: '10px' }}><Lock size={20} /></div>
               <div>
-                <h4 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 6px 0' }}>ABHA Compliance</h4>
-                <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Decentralized health record management following Ayushman Bharat guidelines.</p>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 4px 0' }}>ABHA Compliance</h4>
+                <p style={{ fontSize: '12px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Decentralized health record management following national guidelines.</p>
               </div>
             </div>
 
-            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '24px', borderRadius: '20px', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-              <div style={{ padding: '10px', backgroundColor: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', borderRadius: '12px' }}><Globe size={22} /></div>
+            <div style={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', padding: '20px', borderRadius: '16px', display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
+              <div style={{ padding: '8px', backgroundColor: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', borderRadius: '10px' }}><Globe size={20} /></div>
               <div>
-                <h4 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 6px 0' }}>Bilingual Voice</h4>
-                <p style={{ fontSize: '13px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Seamless Web Speech API integration supporting Hindi and English voice inputs.</p>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '0 0 4px 0' }}>Bilingual Voice</h4>
+                <p style={{ fontSize: '12px', color: isDark ? '#94a3b8' : '#64748b', margin: 0 }}>Seamless Web Speech API supporting Hindi & English voice inputs.</p>
               </div>
             </div>
           </div>
@@ -451,30 +449,29 @@ export default function Home() {
         {/* WORKABLE IMPORTANT LINKS BADGES */}
         <section style={{
           backgroundColor: isDark ? '#090d16' : '#e2e8f0',
-          padding: '30px 24px',
-          borderRadius: '20px',
+          padding: '24px 16px',
+          borderRadius: '16px',
           border: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1',
           textAlign: 'center'
         }}>
-          <h3 style={{ fontSize: '15px', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '1px' }}>
-            Our Important Portals & Links
+          <h3 style={{ fontSize: '13px', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', marginBottom: '16px', letterSpacing: '0.05em' }}>
+            Important Portals & Links
           </h3>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '16px', flexWrap: 'wrap', maxWidth: '1000px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', flexWrap: 'wrap', maxWidth: '1000px', margin: '0 auto' }}>
             {['india.gov.in', 'Ministry of Ayush', 'Digital India', 'GatiShakti', 'MyGov India'].map((badge, idx) => (
               <div 
                 key={idx} 
                 onClick={() => handleLinkClick(badge)}
                 style={{ 
-                  padding: '10px 20px', 
+                  padding: '8px 14px', 
                   backgroundColor: isDark ? '#0f172a' : '#ffffff', 
                   border: isDark ? '1px solid #334155' : '1px solid #cbd5e1', 
-                  borderRadius: '10px', 
-                  fontSize: '13px', 
+                  borderRadius: '8px', 
+                  fontSize: '12px', 
                   fontWeight: 700, 
                   color: '#34d399', 
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                  transition: 'transform 0.2s' 
+                  boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
                 }}
               >
                 {badge} ↗
@@ -491,18 +488,18 @@ export default function Home() {
           position: 'fixed',
           top: 0, left: 0, width: '100vw', height: '100vh',
           backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(5px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '20px'
+          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1100, padding: '16px'
         }}>
           <div style={{
             backgroundColor: isDark ? '#0f172a' : '#ffffff', border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-            borderRadius: '24px', padding: '32px', maxWidth: '500px', width: '100%',
-            boxShadow: '0 25px 50px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '16px'
+            borderRadius: '20px', padding: '24px', maxWidth: '480px', width: '100%',
+            boxShadow: '0 25px 50px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '14px'
           }}>
-            <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0, color: '#10b981' }}>{modalContent.title}</h3>
-            <p style={{ fontSize: '14px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.6, margin: 0, whiteSpace: 'pre-line' }}>{modalContent.body}</p>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#10b981' }}>{modalContent.title}</h3>
+            <p style={{ fontSize: '13px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.5, margin: 0, whiteSpace: 'pre-line' }}>{modalContent.body}</p>
             <button
               onClick={() => setModalContent(null)}
-              style={{ marginTop: '12px', padding: '12px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}
+              style={{ marginTop: '10px', padding: '10px', backgroundColor: '#10b981', color: '#fff', border: 'none', borderRadius: '10px', fontWeight: 700, cursor: 'pointer' }}
             >
               Close Portal View
             </button>
@@ -524,36 +521,36 @@ export default function Home() {
           alignItems: 'center',
           justifyContent: 'center',
           zIndex: 1000,
-          padding: '20px'
+          padding: '16px'
         }}>
           <div style={{
             backgroundColor: isDark ? '#0f172a' : '#ffffff',
             border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
-            borderRadius: '24px',
-            padding: '32px',
-            maxWidth: '500px',
+            borderRadius: '20px',
+            padding: '24px',
+            maxWidth: '480px',
             width: '100%',
             boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px'
+            gap: '14px'
           }}>
-            <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0, color: '#34d399' }}>ArogyaKiosk User Guide</h3>
-            <p style={{ fontSize: '14px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.6, margin: 0 }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#34d399' }}>ArogyaKiosk User Guide</h3>
+            <p style={{ fontSize: '13px', color: isDark ? '#cbd5e1' : '#475569', lineHeight: 1.5, margin: 0 }}>
               1. Click on <strong>Patient Portal & AYUSH</strong> to login or register using ABHA ID or Mobile Number.<br/>
-              2. Select your preferred healthcare domain (Allopathy or AYUSH streams like Ayurveda/Yoga).<br/>
+              2. Select your preferred healthcare domain (Allopathy or AYUSH streams).<br/>
               3. Use <strong>Voice Input</strong> or text to describe your symptoms in Hindi or English.<br/>
-              4. Review RAG safety assessment and download your digital prescription slip.
+              4. Review RAG safety assessment and connect with doctor.
             </p>
             <button
               onClick={() => setShowHelp(false)}
               style={{
-                marginTop: '12px',
-                padding: '12px',
+                marginTop: '10px',
+                padding: '10px',
                 backgroundColor: '#10b981',
                 color: '#ffffff',
                 border: 'none',
-                borderRadius: '12px',
+                borderRadius: '10px',
                 fontWeight: 700,
                 cursor: 'pointer'
               }}
@@ -565,13 +562,13 @@ export default function Home() {
       )}
 
       {/* FLOATING ASTRONAUT AI ASSISTANT */}
-      <div style={{ position: 'fixed', bottom: '24px', right: '24px', zIndex: 1200 }}>
+      <div style={{ position: 'fixed', bottom: '16px', right: '16px', zIndex: 1200 }}>
         {!isAiOpen ? (
           <button
             onClick={() => setIsAiOpen(true)}
             style={{
-              width: '60px',
-              height: '60px',
+              width: '52px',
+              height: '52px',
               borderRadius: '50%',
               backgroundColor: '#10b981',
               color: '#ffffff',
@@ -580,31 +577,32 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 10px 25px rgba(16, 185, 129, 0.5)'
+              boxShadow: '0 8px 20px rgba(16, 185, 129, 0.4)'
             }}
             title="ArogyaKiosk AI Assistant"
           >
-            <Rocket size={28} />
+            <Rocket size={24} />
           </button>
         ) : (
           <div style={{
-            width: '360px',
-            height: '480px',
+            width: 'calc(100vw - 32px)',
+            maxWidth: '360px',
+            height: '460px',
             backgroundColor: isDark ? '#0f172a' : '#ffffff',
             border: isDark ? '1px solid #1e293b' : '1px solid #cbd5e1',
-            borderRadius: '24px',
+            borderRadius: '20px',
             display: 'flex',
             flexDirection: 'column',
             boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
             overflow: 'hidden'
           }}>
-            <div style={{ padding: '16px 20px', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: isDark ? '#020617' : '#f8fafc' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', borderRadius: '50%' }}>
-                  <Rocket size={20} />
+            <div style={{ padding: '14px 16px', borderBottom: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: isDark ? '#020617' : '#f8fafc' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '6px', backgroundColor: 'rgba(16, 185, 129, 0.2)', color: '#34d399', borderRadius: '50%' }}>
+                  <Rocket size={18} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0 }}>ArogyaKiosk Astronaut</h3>
+                  <h3 style={{ fontSize: '14px', fontWeight: 800, margin: 0 }}>ArogyaKiosk Astronaut</h3>
                   <p style={{ fontSize: '10px', color: '#94a3b8', margin: 0 }}>App Scope Assistant</p>
                 </div>
               </div>
@@ -616,13 +614,13 @@ export default function Home() {
               </button>
             </div>
 
-            <div style={{ flex: 1, padding: '16px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ flex: 1, padding: '14px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {messages.map((msg, idx) => (
                 <div key={idx} style={{
                   alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
                   maxWidth: '85%',
-                  padding: '10px 14px',
-                  borderRadius: '12px',
+                  padding: '8px 12px',
+                  borderRadius: '10px',
                   fontSize: '12px',
                   lineHeight: 1.4,
                   backgroundColor: msg.sender === 'user' ? '#10b981' : (isDark ? '#1e293b' : '#f1f5f9'),
@@ -633,16 +631,16 @@ export default function Home() {
               ))}
             </div>
 
-            <form onSubmit={handleAiSend} style={{ padding: '12px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', gap: '8px' }}>
+            <form onSubmit={handleAiSend} style={{ padding: '10px', borderTop: isDark ? '1px solid #1e293b' : '1px solid #e2e8f0', display: 'flex', gap: '6px' }}>
               <input
                 type="text"
-                placeholder="Ask about app features..."
+                placeholder="Ask about features..."
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 style={{
                   flex: 1,
-                  padding: '10px 12px',
-                  borderRadius: '10px',
+                  padding: '8px 10px',
+                  borderRadius: '8px',
                   backgroundColor: isDark ? '#020617' : '#f8fafc',
                   border: isDark ? '1px solid #334155' : '1px solid #cbd5e1',
                   color: isDark ? '#ffffff' : '#0f172a',
@@ -653,11 +651,11 @@ export default function Home() {
               <button
                 type="submit"
                 style={{
-                  padding: '10px 12px',
+                  padding: '8px 12px',
                   backgroundColor: '#10b981',
                   color: '#ffffff',
                   border: 'none',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -671,55 +669,55 @@ export default function Home() {
         )}
       </div>
 
-      {/* OFFICIAL MINISTRY FOOTER WITH WORKABLE USEFUL LINKS */}
+      {/* OFFICIAL MINISTRY FOOTER */}
       <footer style={{
         backgroundColor: '#070b14',
         color: '#94a3b8',
-        padding: '40px 32px 20px 32px',
+        padding: '32px 16px 16px 16px',
         borderTop: '1px solid #1e293b',
         display: 'flex',
         flexDirection: 'column',
-        gap: '30px',
+        gap: '24px',
         boxSizing: 'border-box'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#fff', fontWeight: 800, fontSize: '16px' }}>
-              <Stethoscope size={20} color="#10b981" /> ArogyaKiosk Enterprise
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fff', fontWeight: 800, fontSize: '15px' }}>
+              <Stethoscope size={18} color="#10b981" /> ArogyaKiosk Enterprise
             </div>
-            <p style={{ fontSize: '12px', lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontSize: '12px', lineHeight: 1.5, margin: 0 }}>
               AYUSH BHAWAN, B Block, GPO Complex, INA, NEW DELHI - 110023
             </p>
             <p style={{ fontSize: '12px', margin: 0, color: '#34d399' }}>
-              For Technical Help : support@arogyakiosk.gov.in
+              support@arogyakiosk.gov.in
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <h4 style={{ fontSize: '14px', fontWeight: 800, color: '#fff', margin: '0 0 8px 0', textTransform: 'uppercase' }}>Useful Links</h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: 800, color: '#fff', margin: '0 0 4px 0', textTransform: 'uppercase' }}>Useful Links</h4>
             <span onClick={() => handleLinkClick('Website Policies')} style={{ fontSize: '12px', cursor: 'pointer', color: '#60a5fa' }}>Website Policies</span>
             <span onClick={() => handleLinkClick('Terms and Conditions')} style={{ fontSize: '12px', cursor: 'pointer', color: '#60a5fa' }}>Terms and Conditions</span>
             <span onClick={() => handleLinkClick('Sitemap & FAQs')} style={{ fontSize: '12px', cursor: 'pointer', color: '#60a5fa' }}>Sitemap & FAQs</span>
             <span onClick={() => handleLinkClick('User Manual')} style={{ fontSize: '12px', cursor: 'pointer', color: '#60a5fa' }}>User Manual</span>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <h4 style={{ fontSize: '14px', fontWeight: 800, color: '#fff', margin: '0 0 8px 0', textTransform: 'uppercase' }}>Connect With Us</h4>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <div style={{ padding: '8px', backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', cursor: 'pointer' }}><Share2 size={16} /></div>
-              <div style={{ padding: '8px', backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', cursor: 'pointer' }}><Globe size={16} /></div>
-              <div style={{ padding: '8px', backgroundColor: '#1e293b', borderRadius: '8px', color: '#fff', cursor: 'pointer' }}><MessageCircle size={16} /></div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: 800, color: '#fff', margin: '0 0 4px 0', textTransform: 'uppercase' }}>Connect With Us</h4>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <div style={{ padding: '6px', backgroundColor: '#1e293b', borderRadius: '6px', color: '#fff', cursor: 'pointer' }}><Share2 size={15} /></div>
+              <div style={{ padding: '6px', backgroundColor: '#1e293b', borderRadius: '6px', color: '#fff', cursor: 'pointer' }}><Globe size={15} /></div>
+              <div style={{ padding: '6px', backgroundColor: '#1e293b', borderRadius: '6px', color: '#fff', cursor: 'pointer' }}><MessageCircle size={15} /></div>
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '10px' }}>
-              LAST UPDATE VERSION : [13-SEP-2026] <br />
-              VISITORS COUNT: <strong style={{ color: '#34d399' }}>{visitorCount}</strong>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '6px' }}>
+              LAST UPDATE : [13-SEP-2026] <br />
+              VISITORS: <strong style={{ color: '#34d399' }}>{visitorCount}</strong>
             </div>
           </div>
 
         </div>
 
-        <div style={{ textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px', fontSize: '12px', color: '#64748b' }}>
+        <div style={{ textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px', fontSize: '11px', color: '#64748b' }}>
           Website content owned by Ministry of Ayush, Government of India. Developed for Smart India Hackathon (SIH 2026).
         </div>
       </footer>
